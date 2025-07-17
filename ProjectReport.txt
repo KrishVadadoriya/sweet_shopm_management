@@ -1,0 +1,112 @@
+📄 Test Report: Sweet Shop Management System
+🧪 Test Methodology
+This project was developed using Test-Driven Development (TDD), ensuring reliability and maintainability of both the model layer (business logic and validation) and controller/API layer (endpoints and operations).
+
+🧱 Technologies Used
+Testing Framework: Jest
+
+HTTP Testing: Supertest
+
+Database: MongoDB (local test DB: sweet_shop_test)
+
+ORM: Mongoose
+
+Environment: Node.js, Express.js
+
+✅ Test Coverage
+1. ✅ Model Test: sweet.model.js
+This test validates business rules and schema constraints on the Sweet data model.
+
+Test Case Description	Expected Result	Status
+✔ Create and save a valid sweet	Sweet created with correct data and _id generated	✅ Pass
+❌ Missing required fields (e.g. category, price)	Throws ValidationError	✅ Pass
+❌ Invalid category (not in enum list)	Throws ValidationError on category	✅ Pass
+❌ Negative price	Throws ValidationError on price	✅ Pass
+❌ Negative quantity	Throws ValidationError on quantity	✅ Pass
+
+🧠 Key Validations Implemented:
+
+All fields are required
+
+price and quantity must be ≥ 0
+
+category must be one of the allowed enum values (e.g. Chocolate, Candy)
+
+2. ✅ Controller / API Tests: sweet.controller.test.js
+Tested all primary API functionalities through Express endpoints.
+
+1. POST /sweets – Create a valid sweet
+This test checks whether a new sweet item can be added when all required fields are provided correctly.
+Expected Result: The sweet should be created successfully, and the server should respond with status 201 Created.
+
+2. POST /sweets – Missing required fields
+This test ensures that the system returns a proper error when a user tries to add a sweet without filling all required fields (like price, quantity, or category).
+Expected Result: The API should return status 400 Bad Request with a descriptive error message.
+
+3. POST /sweets – Invalid category
+This test checks that the API rejects sweets with categories outside the allowed predefined enum values (e.g., Chocolate, Candy, etc.).
+Expected Result: The server should respond with status 400 and return a validation error for category.
+
+4. GET /sweets – Retrieve all sweets
+This test validates the retrieval of the full sweet list from the database. It checks if all added sweets are returned correctly.
+Expected Result: The server should return status 200 OK with an array of all available sweets.
+
+5. GET /sweets/search?name=... – Search by name
+This test validates the ability to search sweets by a partial or full match of the name field.
+Expected Result: Only sweets matching the provided name query should be returned, with status 200 OK.
+
+6. GET /sweets/search?category=... – Search by category
+This test ensures sweets can be filtered by category.
+Expected Result: The server should return sweets that match the given category, with status 200 OK.
+
+7. GET /sweets/search?minPrice=...&maxPrice=... – Filter by price range
+This test checks filtering functionality by price range.
+Expected Result: Only sweets within the given minPrice and maxPrice range should be returned.
+
+8. DELETE /sweets/:id – Delete existing sweet
+This test checks that a sweet with a valid ID can be deleted from the database.
+Expected Result: The sweet should be deleted, and the response should be 200 OK.
+
+9. DELETE /sweets/:id – Delete non-existent sweet
+This test ensures the API handles deletion of sweets that do not exist.
+Expected Result: The server should return a 404 Not Found error.
+
+10. POST /sweets/:id/purchase – Purchase within stock
+This test verifies the stock quantity is reduced appropriately when a valid purchase is made.
+Expected Result: Quantity is updated, and response is 200 OK.
+
+11. POST /sweets/:id/purchase – Over-purchase beyond stock
+This test validates protection against purchasing more items than available in stock.
+Expected Result: The server should reject the request with 400 Bad Request, and no quantity should be changed.
+
+12. POST /sweets/:id/restock – Restock with valid quantity
+This test confirms restocking functionality. The sweet's quantity should increase by the restock amount.
+Expected Result: The new quantity is updated, and the response is 200 OK.
+
+13. POST /sweets/:id/restock – Restock with negative value
+This test ensures that negative values are not allowed during restocking.
+Expected Result: The server should respond with 400 Bad Request, and the quantity should remain unchanged.
+
+
+
+📊 Summary
+Layer	Total Tests	Passed	Failed	Coverage
+Model	5	5	0	100% ✅
+Controller	13	13	0	100% ✅
+Total	18	18	0	100% 🟢
+
+📌 Highlights
+All validation scenarios were tested before implementation (TDD).
+
+Each controller route is covered with edge cases, including invalid inputs and error handling.
+
+Ensures data consistency, robust API behavior, and accurate feedback to users.
+
+🏁 Conclusion
+The Sweet Shop Management System was built with rigorous testing in place from the beginning, aligning with industry-standard TDD practices. This approach ensures:
+
+Fewer bugs in production
+
+Clean, modular, and testable code
+
+Confidence in refactoring or extending the system
