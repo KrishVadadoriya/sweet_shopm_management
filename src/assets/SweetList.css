@@ -1,0 +1,157 @@
+/* SweetList.css */
+.sweet-list-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sweet-list-header {
+  margin-bottom: 20px;
+}
+
+.sweet-list-header h2 {
+  color: #6a1b9a;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+/* Search Form */
+.search-form {
+  background-color: #f9f4fc;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.search-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.search-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-group input,
+.search-group select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.price-range {
+  display: flex;
+  gap: 10px;
+}
+
+.price-range input {
+  flex: 1;
+}
+
+.search-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.search-btn,
+.reset-btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.search-btn {
+  background-color: #6a1b9a;
+  color: white;
+  flex: 1;
+}
+
+.search-btn:hover {
+  background-color: #8e24aa;
+}
+
+.reset-btn {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.reset-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* Sort Container */
+.sort-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.sort-container label {
+  font-weight: 500;
+  color: #555;
+}
+
+.sort-select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 0.9rem;
+  flex-grow: 1;
+}
+
+/* Sweet Cards Container */
+.sweet-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+  overflow-y: auto;
+  padding-right: 5px;
+  max-height: 500px;
+}
+
+/* Error and Loading States */
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-style: italic;
+}
+
+.no-sweets {
+  text-align: center;
+  padding: 30px 20px;
+  color: #666;
+  font-style: italic;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  grid-column: 1 / -1;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .search-inputs {
+    grid-template-columns: 1fr;
+  }
+  
+  .sweet-cards {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}

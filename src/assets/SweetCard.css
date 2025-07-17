@@ -1,0 +1,72 @@
+/* SweetCard.css */
+.sweet-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  height: 100%;
+}
+
+.sweet-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.sweet-card-content {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sweet-name {
+  color: #6a1b9a;
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.sweet-category {
+  background-color: #f3e5f5;
+  color: #6a1b9a;
+  font-size: 0.8rem;
+  padding: 3px 8px;
+  border-radius: 12px;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.sweet-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.sweet-quantity {
+  font-size: 0.9rem;
+  padding: 5px 8px;
+  border-radius: 4px;
+  margin-top: auto;
+}
+
+/* Stock status colors */
+.in-stock {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.low-stock {
+  background-color: #fff8e1;
+  color: #ff8f00;
+}
+
+.out-of-stock {
+  background-color: #ffebee;
+  color: #c62828;
+}
